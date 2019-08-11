@@ -1,0 +1,11 @@
+.output-field {
+  &--input {
+    border: none;
+    text-align: right;
+    padding: 8px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}

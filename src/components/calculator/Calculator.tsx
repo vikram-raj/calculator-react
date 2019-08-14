@@ -15,8 +15,10 @@ const Calculator: React.FC = () => {
   const equalBGColor = '#00C535';
 
   const handleClick = (event: any) => {
-    const val = event.target.value;
-
+    let val = '';
+    if(event.target.value) {
+      val = event.target.value;
+    }
     switch(val) {
       case '=': {
         if(question !== '') {
@@ -24,19 +26,19 @@ const Calculator: React.FC = () => {
           try {
             // eslint-disable-next-line no-eval
             ans = eval(question);
+            if (ans === undefined) {
+              setAnswer('Math Error');
+            } else {
+              setAnswer(ans);
+              setHistory([...[{question: question,
+                answer: ans,
+                id: generateUUID()}],
+                ...history].slice(0, 10));
+              setQuestion('');
+            }
           }
           catch(err) {
             setAnswer('Math Error');
-          }
-          if (ans === undefined) {
-            setAnswer('Math Error');
-          } else {
-            setAnswer(ans);
-            setHistory([...[{question: question,
-              answer: ans,
-              id: generateUUID()}],
-              ...history].slice(0, 10));
-            setQuestion('');
           }
         }
         break;
@@ -50,6 +52,9 @@ const Calculator: React.FC = () => {
         let q = question;
         q = q.substr(0, q.length - 1);
         setQuestion(q);
+        break;
+      }
+      case '': {
         break;
       }
       default: {

@@ -26,7 +26,6 @@ const Button: React.FC<ButtonProps> = ({label, handleClick, textColor, backgroun
     }, 600);
     handleClick(e);
   }
-
   return (
     <button type="button"
       className="button"

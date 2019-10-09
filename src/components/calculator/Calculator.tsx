@@ -12,7 +12,7 @@ const Calculator: React.FC = () => {
   const [answer, setAnswer] = useState('');
   const [history, setHistory] = useState([{question: '', answer: '', id: ''}]);
   const textColor = '#ffffff';
-  const equalBGColor = '#00C535';
+  const equalBGColor = '#CDCDCD';
 
   const handleClick = (event: any) => {
     let val = '';
